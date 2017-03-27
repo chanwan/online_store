@@ -5,6 +5,7 @@ class CreateDishes < ActiveRecord::Migration
       t.text :desc
       t.decimal :price
       t.string :image
+      t.references :shop
 
       t.timestamps null: false
     end
