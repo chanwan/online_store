@@ -56,13 +56,13 @@ ActiveAdmin.setup do |config|
   # within the application controller.
   # config.authentication_method = :authenticate_admin_user!
 
-  # == User Authorization
+   == User Authorization
   #
   # Active Admin will automatically call an authorization
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
-  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+  config.authorization_adapter = Adapters::OnlyAdmins
 
   # In case you prefer Pundit over other solutions you can here pass
   # the name of default policy class. This policy will be used in every
@@ -77,9 +77,9 @@ ActiveAdmin.setup do |config|
   # because, by default, user gets redirected to Dashboard. If user
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
-  # config.on_unauthorized_access = :access_denied
+   config.on_unauthorized_access = :access_denied
 
-  # == Current User
+  config.current_user_method = :current_user
   #
   # Active Admin will associate actions with the current
   # user performing them.
@@ -88,7 +88,8 @@ ActiveAdmin.setup do |config|
   # (within the application controller) to return the currently logged in user.
   # config.current_user_method = :current_admin_user
 
-  # == Logging Out
+   config.logout_link_path = :destroy_user_session_path
+   config.logout_link_method = :delete
   #
   # Active Admin displays a logout link on each screen. These
   # settings configure the location and method used for the link.
