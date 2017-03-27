@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'dishes/index'
-
-  get 'dishes/show'
-
-  get 'shops/index'
-
-  get 'shops/show'
+resources :shops, :dishes
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
