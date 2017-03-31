@@ -23,3 +23,16 @@ ActiveAdmin.register Shop do
     f.actions
   end
 end
+
+index do
+  selectable_column
+  id_column
+  column :image do |shop|
+    image_tag shop.image.url(:thumb)
+  end
+  column :name do |shop|
+    link_to shop.title, admin_shop_path(shop)
+  end
+  column :desc
+  actions
+end
