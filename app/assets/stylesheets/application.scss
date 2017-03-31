@@ -4,3 +4,15 @@
 .navbar-fixed-top, .navbar-fixed-bottom {
 	position: static;
 }
+
+.thumbnail h3, .thumbnail p {
+	text-align: center
+}
+
+.thumbnail a {
+	padding: 2px 25%;
+}
+
+#modal {
+	padding: 2px 6.0em;
+}

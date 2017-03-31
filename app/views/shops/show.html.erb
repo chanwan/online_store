@@ -1,2 +1,44 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Portfolio Item Heading -->
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        <%= @shop.name %>
+      </h1>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-8">
+      <%= image_tag @shop.image.url(:large), class: "img-responsive"%>
+    </div>
+
+    <div class="col-md-4">
+      <h3>Description</h3>
+      <p><%= @shop.desc %></p>
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  <!-- Related Projects Row -->
+  <div class="row">
+  <% @dish.each do |i|%>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <%= image_tag i.image.url(:thumb) %>
+        <div class="caption">
+          <h3><%= i.title %></h3>
+          <p><%= i.price %></p>
+          <p><%= link_to 'Buy', '#', class: 'btn btn-primary' %></p>
+        </div>
+      </div>
+      </div>
+<% end %>
+  </div>
+  <!-- /.row -->

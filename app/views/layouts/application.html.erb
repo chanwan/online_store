@@ -27,7 +27,7 @@
         <ul class="navbar-nav navbar-right">
           <% if user_signed_in? %>
           <p class="navbar-text">
-          Hello, <%= link_to current_user.email, edit_user_registration_path(current_user), class: 'navbar-link' %>
+            Hello, <%= link_to current_user.email, edit_user_registration_path(current_user), class: 'navbar-link' %>
           </p>
           <ul class="nav navbar-nav">
             <li class="dropdown">
@@ -40,10 +40,34 @@
               </ul>
             </li>
           </ul>
+
           <% else %>
           <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-default navbar-btn' %>
           <%= link_to 'Log in', new_user_session_path, class: 'btn btn-default navbar-btn' %>
           <% end %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" id="modal">
+            Cart
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
@@ -51,6 +75,18 @@
 
 
   <%= yield %>
+  <!-- Footer -->
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Copyright &copy; Your Website 2014</p>
+      </div>
+    </div>
+    <!-- /.row -->
+  </footer>
+
+</div>
+<!-- /.container -->
 
 </body>
 </html>

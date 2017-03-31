@@ -14,25 +14,28 @@ ActiveAdmin.register Shop do
 
 
 
- form do |f|
-    f.inputs do
-      f.input :name
-      f.input :desc
-      f.input :image, :as => :file
-    end
-    f.actions
-  end
+form do |f|
+	f.inputs do
+		f.input :name
+		f.input :desc
+		f.input :image, :as => :file
+	end
+	f.actions
 end
 
+permit_params :name, :desc, :image
+
 index do
-  selectable_column
-  id_column
-  column :image do |shop|
-    image_tag shop.image.url(:thumb)
-  end
-  column :name do |shop|
-    link_to shop.title, admin_shop_path(shop)
-  end
-  column :desc
-  actions
+	selectable_column
+	id_column
+	column :image do |shop|
+		image_tag shop.image.url(:thumb)
+	end
+	column :name do |shop|
+		link_to shop.name, admin_shop_path(shop)
+	end
+	column :desc
+	actions
 end
+end
+

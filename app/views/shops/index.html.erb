@@ -1,15 +1,16 @@
 <div class="row">
+<% @shops.each do |shop| %>
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="..." alt="...">
+      <%= image_tag shop.image.url(:medium)%>
       <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <h3><%= shop.name %></h3>
+        <p><%= shop.desc %></p>
+        <p><%= link_to 'View', shop_path(shop), class: 'btn btn-primary' %></p>
       </div>
     </div>
   </div>
-
+<% end %>
   <!-- <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <img src="..." alt="...">
