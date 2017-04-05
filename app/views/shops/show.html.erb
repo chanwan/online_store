@@ -22,10 +22,24 @@
             <h4 class="modal-title" id="myModalLabel">Cart</h4>
           </div>
           <div class="modal-body">
-          <% @cart.cart_items.each do |cart| %>
-            <p><%= cart.dish.title %></p>
-
+          
+          <table border="1" width="100%">
+            <tr>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Count</th>
+            </tr>
+            <% @cart.cart_items.each do |cart| %>
+            <tr>
+              <th><%= image_tag cart.dish.image.url(:thumb) %></th>
+              <th><%= cart.dish.title %></th>
+              <th><%= cart.dish.price %></th>
+              <th><%= cart.count %></th>
+            </tr>
             <% end %>
+          </table>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
