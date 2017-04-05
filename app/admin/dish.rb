@@ -24,7 +24,7 @@ form do |f|
   f.actions
 end
 
-permit_params :shop, :title, :desc, :price, :image
+permit_params :shop_id, :title, :desc, :price, :image
 index do
   selectable_column
   id_column

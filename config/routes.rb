@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
   root 'shops#index'
-resources :shops, :dishes
+resources :shops, :dishes, :cart_items
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

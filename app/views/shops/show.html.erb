@@ -8,6 +8,32 @@
         <%= @shop.name %>
       </h1>
     </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal" id="modal">
+      Cart
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Cart</h4>
+          </div>
+          <div class="modal-body">
+          <% @cart.cart_items.each do |cart| %>
+            <p><%= cart.dish.title %></p>
+
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- /.row -->
 
@@ -28,17 +54,21 @@
 
   <!-- Related Projects Row -->
   <div class="row">
-  <% @dish.each do |i|%>
+    <% @dish.each do |i|%>
     <div class="col-sm-6 col-md-4">
       <div class="thumbnail">
         <%= image_tag i.image.url(:thumb) %>
         <div class="caption">
           <h3><%= i.title %></h3>
           <p><%= i.price %></p>
-          <p><%= link_to 'Buy', '#', class: 'btn btn-primary' %></p>
+          <%= form_for CartItem.new do |c|%>
+          <%= c.hidden_field :cart_id, value: @cart.id %>
+          <%= c.hidden_field :dish_id, value: i.id %>
+          <%= c.submit 'Buy', class: 'btn btn-primary submit' %>
+          <% end %>
         </div>
       </div>
-      </div>
-<% end %>
+    </div>
+    <% end %>
   </div>
   <!-- /.row -->
